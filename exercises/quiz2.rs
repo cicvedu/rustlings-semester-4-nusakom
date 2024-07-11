@@ -20,7 +20,7 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
+
 
 pub enum Command {
     Uppercase,
@@ -32,30 +32,26 @@ mod my_module {
     use super::Command;
 
     pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
-        let mut output: Vec<String> = vec![];
-
+        let mut output: Vec<String> = Vec::new();
         for (string, command) in input.iter() {
-            match command {
-                Command::Uppercase => {
-                    output.push(string.to_uppercase());
+            let transformed = match command {
+                Command::Uppercase => string.to_uppercase(),
+                Command::Trim => string.trim().to_string(),
+                Command::Append(n) => {
+                    let append_str = "bar".repeat(*n);
+                    string.clone() + &append_str
                 }
-                Command::Trim => {
-                    output.push(string.trim().to_string());
-                }
-                Command::Append(count) => {
-                    output.push(string.clone() + &"a".repeat(*count));
-                }
-            }
+            };
+            output.push(transformed);
         }
-
         output
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::my_module::transformer;
-    use super::Command;
+    use crate::my_module::transformer;
+    use super::Command; 
 
     #[test]
     fn it_works() {
@@ -67,7 +63,7 @@ mod tests {
         ]);
         assert_eq!(output[0], "HELLO");
         assert_eq!(output[1], "all roads lead to rome!");
-        assert_eq!(output[2], "fooa");
-        assert_eq!(output[3], "barrrrrr");
+        assert_eq!(output[2], "foobar");
+        assert_eq!(output[3], "barbarbarbarbarbar");
     }
 }
