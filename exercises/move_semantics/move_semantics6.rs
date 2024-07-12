@@ -10,22 +10,19 @@
 fn main() {
     let data = "Rust is great!".to_string();
 
-    // 不获取所有权，只是借用
-    let last_char = get_char(&data);
-    println!("Last character: {}", last_char);
+    get_char(data.clone());
 
-    // 获取所有权并变更字符串
-    let uppercased_data = string_uppercase(data);
-    println!("Uppercased: {}", uppercased_data);
+    string_uppercase(&data);
 }
 
-// 不应获取所有权
-fn get_char(data: &String) -> char {
+// Should not take ownership
+fn get_char(data: String) -> char {
     data.chars().last().unwrap()
 }
 
-// 应获取所有权
-fn string_uppercase(mut data: String) -> String {
-    data = data.to_uppercase();
-    data
+// Should take ownership
+fn string_uppercase(mut data: &String) {
+   let data = &data.to_uppercase();
+
+    println!("{}", data);
 }

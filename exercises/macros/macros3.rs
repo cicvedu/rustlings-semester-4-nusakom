@@ -5,15 +5,16 @@
 // Execute `rustlings hint macros3` or use the `hint` watch subcommand for a
 // hint.
 
+// I AM NOT DONE
 
-
-macro_rules! my_macro {
-    ($var:expr) => {
-        println!("This is my macro. The value of $var is: {}", $var);
+mod macros {
+    macro_rules! my_macro {
+        () => {
+            println!("Check out my macro!");
+        };
     }
 }
 
 fn main() {
-    my_macro!(5); // 输出: This is my macro. The value of $var is: 5
-    my_macro!("hello"); // 输出: This is my macro. The value of $var is: hello
+    my_macro!();
 }

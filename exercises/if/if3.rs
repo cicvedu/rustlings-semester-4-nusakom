@@ -6,21 +6,21 @@
 
 pub fn animal_habitat(animal: &str) -> &'static str {
     let identifier = if animal == "crab" {
-        "Beach"
+        1
     } else if animal == "gopher" {
-        "Burrow"
+        2
     } else if animal == "snake" {
-        "Desert"
+        3
     } else {
-        "Unknown"
+        0
     };
 
     // DO NOT CHANGE THIS STATEMENT BELOW
-    let habitat = if identifier == "Beach" {
+    let habitat = if identifier == 1 {
         "Beach"
-    } else if identifier == "Burrow" {
+    } else if identifier == 2 {
         "Burrow"
-    } else if identifier == "Desert" {
+    } else if identifier == 3 {
         "Desert"
     } else {
         "Unknown"

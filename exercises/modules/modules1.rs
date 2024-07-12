@@ -5,19 +5,20 @@
 
 
 
-mod sausage_factory {
-    // Don't let anybody outside of this module see this!
-    fn get_secret_recipe() -> String {
-        String::from("Ginger")
-    }
-
-    pub fn make_sausage() {
-        get_secret_recipe();
-        println!("sausage!");
-    }
+mod sausage_factory {  
+    // 这个函数只在模块内部可见  
+    fn get_secret_recipe() -> String {  
+        String::from("Ginger")  
+    }  
+  
+    // 这个函数现在可以被模块外部调用  
+    pub fn make_sausage() {  
+        let recipe = get_secret_recipe();  
+        println!("Secret recipe: {}", recipe);  
+        println!("sausage!");  
+    }  
+}  
+  
+fn main() {  
+    sausage_factory::make_sausage();  
 }
-
-fn main() {
-    sausage_factory::make_sausage();
-}
-
