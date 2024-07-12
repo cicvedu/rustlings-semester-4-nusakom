@@ -8,6 +8,7 @@
 // hint.
 
 
+
 pub trait SomeTrait {  
     fn some_function(&self) -> bool;  
 }  

@@ -6,17 +6,13 @@
 
 
 #[cfg(test)]
-
 mod tests {
-
-    use std::option::Option; // 引入Option类型
-
     #[test]
     fn simple_option() {
         let target = "rustlings";
         let optional_target = Some(target);
 
-        // 使用if let来检查optional_target是否为Some类型，并解构出值
+        // 使用 if let 来匹配 Some(value) 模式
         if let Some(word) = optional_target {
             assert_eq!(word, target);
         }
@@ -25,20 +21,20 @@ mod tests {
     #[test]
     fn layered_option() {
         let range = 10;
-        let mut optional_integers: Vec<Option<i8>> = vec![None; range]; // 初始化长度为range的向量，每个元素都是None
+        let mut optional_integers: Vec<Option<i8>> = vec![None];
 
-        for i in 0..range { // 循环从0开始到range-1
-            optional_integers[i] = Some(i as i8); // 直接赋值
+        for i in 1..=range {
+            optional_integers.push(Some(i));
         }
 
-        let mut cursor = range as i8 - 1; // 初始化为range-1，因为我们将从最大的数开始比较
+        let mut cursor = range;
 
-        // 使用while let在循环中检查optional_integers.pop()返回的值
-        while let Some(Some(integer)) = optional_integers.pop() { // 解构两次Option
-            assert_eq!(integer, cursor); // 直接比较integer和cursor
+        // 使用 while let 来处理 Vec 中的 Option<i8>
+        while let Some(Some(integer)) = optional_integers.pop() {
+            assert_eq!(integer, cursor);
             cursor -= 1;
         }
 
-        assert_eq!(cursor, -1); // 最后cursor应该为-1，因为我们从9开始递减到0
+        assert_eq!(cursor, 0);
     }
 }

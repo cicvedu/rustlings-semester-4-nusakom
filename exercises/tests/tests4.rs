@@ -6,6 +6,7 @@
 // hint.
 
 
+
 struct Rectangle {
     width: i32,
     height: i32
@@ -47,4 +48,3 @@ mod tests {
         let _rect = Rectangle::new(10, -10);
     }
 }
-

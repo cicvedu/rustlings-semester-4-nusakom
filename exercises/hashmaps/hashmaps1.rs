@@ -13,38 +13,35 @@
 
 
 
-use std::collections::HashMap;  
-  
-fn fruit_basket() -> HashMap<String, u32> {  
-    let mut basket = HashMap::new(); // 声明一个新的空的 HashMap  
-  
-    // 已有两个香蕉  
-    basket.insert(String::from("banana"), 2);  
-  
-    // 在篮子里放入更多水果  
-    basket.insert(String::from("apple"), 1);  
-    basket.insert(String::from("orange"), 1);  
-    basket.insert(String::from("pear"), 1);  
-  
-    // 可以根据需要继续添加水果  
-    // ...  
-  
-    basket  
-}  
-  
-#[cfg(test)]  
-mod tests {  
-    use super::*;  
-  
-    #[test]  
-    fn at_least_three_types_of_fruits() {  
-        let basket = fruit_basket();  
-        assert!(basket.len() >= 3); // 确保至少有三种类型的水果  
-    }  
-  
-    #[test]  
-    fn at_least_five_fruits() {  
-        let basket = fruit_basket();  
-        assert!(basket.values().sum::<u32>() >= 5); // 确保水果的总数至少为五个  
-    }  
+use std::collections::HashMap;
+
+fn fruit_basket() -> HashMap<String, u32> {
+    let mut basket = HashMap::new();
+
+    // Inserting fruits into the basket
+    basket.insert(String::from("banana"), 2);
+    basket.insert(String::from("apple"), 3);
+    basket.insert(String::from("orange"), 1);
+    basket.insert(String::from("pear"), 1);
+    basket.insert(String::from("grape"), 2);
+
+    basket
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn at_least_three_types_of_fruits() {
+        let basket = fruit_basket();
+        assert!(basket.len() >= 3);
+    }
+
+    #[test]
+    fn at_least_five_fruits() {
+        let basket = fruit_basket();
+        assert!(basket.values().sum::<u32>() >= 5);
+    }
+}
+

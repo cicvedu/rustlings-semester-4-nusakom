@@ -24,7 +24,9 @@ fn main() {
                 println!("You now have {} tokens.", tokens);
             }
         }
-        Err(e) => println!("Error parsing quantity: {}", e),
+        Err(e) => {
+            println!("Error parsing item quantity: {}", e);
+        }
     }
 }
 
